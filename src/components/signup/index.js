@@ -33,7 +33,7 @@ const Signup = () => {
     if (currentUser) {
       history.push('/');
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   const handleFormSubmit = event => {
     event.preventDefault();

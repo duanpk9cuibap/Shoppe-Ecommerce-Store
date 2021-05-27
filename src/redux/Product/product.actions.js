@@ -2,14 +2,16 @@ import apis from './apis.js';
 import productTypes from './product.types.js';
 
 
-export const createNewProduct = formValues => async dispatch => {
+export const createNewProduct = formValues => async (dispatch, getState) => {
+  const { id } = getState().user.currentUser;
+  const userId = id;
 
-  const response = await apis.post('/products', formValues);
+  const response = await apis.post('/products', { ...formValues, userId });
 
   dispatch({
     type: productTypes.CREATE_NEW_PRODUCT,
     payload: response.data
-  })
+  });
 };
 
 

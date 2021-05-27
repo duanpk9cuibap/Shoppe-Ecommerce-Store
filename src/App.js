@@ -9,14 +9,15 @@ import './defaults.scss';
 import Home from './pages/Homepage/Home';
 import Signin from './components/Signin';
 import Signup from './components/signup';
-import CreateProduct from './components/ProductForm/CreateProduct';
+import CreateProduct from './components/CRUDPRODUCTS/CreateProduct';
 import ResetPassword from './components/ResetPassword';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer';
-import FetchYourOwnProducts from './components/ProductForm/FetchYourOwnProducts';
+import FetchYourOwnProducts from './components/CRUDPRODUCTS/FetchYourOwnProducts';
+import EditYourProduct from './components/CRUDPRODUCTS/EditYourProduct';
 
 
-const App = props => {
+const App = () => {
 
   const dispatch = useDispatch();
 
@@ -41,10 +42,12 @@ const App = props => {
             render={() => <Signup />}>
           </Route>
 
-          <Route path='/product/new'
+          <Route path='/products/new'
             render={() => <CreateProduct />} />
 
           <Route exact path='/products' render={() => <FetchYourOwnProducts />} />
+
+          <Route path='/products/edit/:id' exact component={EditYourProduct} />
 
           <Route path='/recovery'
             render={() => <ResetPassword />} />

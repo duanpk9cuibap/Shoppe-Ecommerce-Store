@@ -1,0 +1,56 @@
+.list-products{
+  margin: 1.2rem;
+
+  &__card{
+    margin-top: 1rem;
+  }
+
+  img{
+    height: 14rem;
+    object-fit: contain;
+  }
+
+  button{
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29 ;
+    color: #111;
+    width: 5rem;
+    border-radius: 2px;
+    margin-right: 1rem;
+
+    &:hover{
+      box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+  }
+  }
+
+}
+
+#delete{
+    background-color: #C82333
+}
+
+#edit{
+  background-color: #f0c14b;
+}
+
+.loadingToSelling{
+  margin: 1.5rem;
+  text-align: center;
+
+  .signIn{
+    border: 1px solid;
+    margin-top: 20px;
+    border-color: #a88734 #9c7e31 #846a29 ;
+    color: #111;
+    width: 5rem;
+    border-radius: 2px;
+    margin-right: 1rem;
+
+    &:hover{
+      box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+  }
+  }
+}

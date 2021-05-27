@@ -61,20 +61,22 @@ function Header() {
         }
 
         <div className="header__option">
+          <a href="/products">
+            <span className="header__optionLineOne">
+              Start
+          </span>
+            <span className="header__optionLineTwo">
+              Selling on Shoppe
+          </span>
+          </a>
+        </div>
+
+        <div className="header__option">
           <span className="header__optionLineOne">
             Returns
           </span>
           <span className="header__optionLineTwo">
             & Orders
-          </span>
-        </div>
-
-        <div className="header__option">
-          <span className="header__optionLineOne">
-            Yours
-          </span>
-          <span className="header__optionLineTwo">
-            Prime
           </span>
         </div>
 

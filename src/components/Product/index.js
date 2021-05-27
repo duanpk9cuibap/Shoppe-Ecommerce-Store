@@ -11,7 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 
 function Product(product) {
 
-  const { title, image, price, rating, id } = product;
+  const { title, image, price, rating } = product;
   const dispatch = useDispatch();
   const history = useHistory();
 
