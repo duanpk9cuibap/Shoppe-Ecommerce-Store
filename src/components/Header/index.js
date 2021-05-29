@@ -9,6 +9,7 @@ import Logo from '../../assets/Logo.png';
 
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import StoreIcon from '@material-ui/icons/Store';
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -23,7 +24,7 @@ function Header() {
 
   const onSignOut = () => {
     dispatch(signOutUserStart());
-    history.push('/login');
+    history.goBack();
   }
 
   return (
@@ -34,9 +35,14 @@ function Header() {
       </Link>
 
       <div className="header__search">
-        <input type="text" className="header__searchInput" />
-        <SearchIcon className="header__searchIcon" />
+        <form className="header__search__form">
+          <input type="text" className="header__search__form__input" />
+          <div className="header__search__form__right">
+            <button type="submit">Search</button>
+          </div>
+        </form>
       </div>
+
 
       <div className="header__nav">
 
@@ -60,16 +66,22 @@ function Header() {
           </Link>
         }
 
-        <div className="header__option">
-          <a href="/products">
-            <span className="header__optionLineOne">
-              Start
+        {!currentUser ? <Link className="header__option" to="/products">
+          <span className="header__optionLineOne">
+            Start
           </span>
+          <span className="header__optionLineTwo">
+            Selling on Shoppe
+          </span>
+        </Link>
+          :
+          <Link to="/products" className="header__option" >
+            <span className="header__optionLineOne"> <StoreIcon /></span>
             <span className="header__optionLineTwo">
-              Selling on Shoppe
+              Your Store
           </span>
-          </a>
-        </div>
+          </Link>
+        }
 
         <div className="header__option">
           <span className="header__optionLineOne">
@@ -80,16 +92,14 @@ function Header() {
           </span>
         </div>
 
-        <Link to='/checkout'>
-          <div className="header__optionBasket">
-            <ShoppingCartIcon />
-            <span className="header__optionLineTwo header__basketCount">
-              {totalNumCartItems}
-            </span>
-          </div>
+        <Link to='/checkout' className="header__optionBasket">
+          <span><ShoppingCartIcon /></span>
+          <span className="header__optionLineTwo header__basketCount">
+            {totalNumCartItems}
+          </span>
         </Link>
       </div>
-    </div>
+    </div >
   )
 }
 

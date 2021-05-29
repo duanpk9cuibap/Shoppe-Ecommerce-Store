@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route,useLocation, withRouter } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
 
 //pages
@@ -17,6 +17,16 @@ import FetchYourOwnProducts from './components/CRUDPRODUCTS/FetchYourOwnProducts
 import EditYourProduct from './components/CRUDPRODUCTS/EditYourProduct';
 
 
+function _ScrollToTop(props) {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+    return props.children
+}
+const ScrollToTop = withRouter(_ScrollToTop)
+
+
 const App = () => {
 
   const dispatch = useDispatch();
@@ -27,6 +37,7 @@ const App = () => {
 
   return (
     <Router>
+    <ScrollToTop>
       <div className="app">
         <Header />
 
@@ -58,6 +69,7 @@ const App = () => {
         </Switch>
         <Footer />
       </div>
+      </ScrollToTop>
     </Router >
   );
 }

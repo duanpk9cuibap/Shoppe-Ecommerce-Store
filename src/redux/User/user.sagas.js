@@ -4,7 +4,6 @@ import userTypes from './user.types';
 import { signInSuccess, signOutUserSuccess, userError, resetPasswordSuccess } from './user.actions';
 import { handleResetPasswordAPI } from './user.helpers';
 
-
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
     const userRef = yield call(handleUserProfile, { userAuth: user, additionalData });

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchProducts } from '../../../redux/Product/product.actions';
 import './styles.scss';
@@ -61,7 +62,7 @@ function FetchYourOwnProducts() {
           Start selling on Shoppe...
                   </button>
         <br />
-        <button className="signIn">Sign in</button>
+        <Link to='/login'><button className="signIn">Sign in</button></Link>
       </div>
     )
   }

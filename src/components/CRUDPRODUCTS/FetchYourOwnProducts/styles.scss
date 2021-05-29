@@ -3,11 +3,12 @@
 
   &__card{
     margin-top: 1rem;
-  }
+       }
 
   img{
     height: 14rem;
     object-fit: contain;
+    margin-bottom:-1.2rem;
   }
 
   button{
@@ -47,6 +48,8 @@
     width: 5rem;
     border-radius: 2px;
     margin-right: 1rem;
+    background-color: #f0c14b;
+    border-radius: 5px;
 
     &:hover{
       box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
@@ -54,3 +57,5 @@
   }
   }
 }
+
+
