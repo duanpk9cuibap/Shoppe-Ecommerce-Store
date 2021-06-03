@@ -1,5 +1,5 @@
 .header{
-  height: 3.75rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   position: sticky;
@@ -10,8 +10,23 @@
   @media only screen and (max-width: 50rem) {
     flex-wrap: wrap;
     align-content: space-evenly;
-    height: 6.5rem;
+    justify-content: space-around ;
+    height: 7rem;
 }
+
+&__logo img{
+  width: 6.25rem;
+  object-fit: contain;
+  margin: 0 10px;
+  margin-top: 2px;
+  &:hover{
+    border: 0.1rem solid #ff9000;
+    border-radius: 0.2rem;
+    color: #f3a847;
+    box-shadow: 0rem 0rem 0.3rem #febd69;
+  }
+} 
+
  &__search{
     box-sizing: border-box;
     width: auto;
@@ -77,40 +92,8 @@
         }
       }
  }
- 
-  &__logo{
-    width: 6.25rem;
-    object-fit: contain;
-    margin: 0 10px;
-    margin-top: 2px;
-    &:hover{
-      border: 0.1rem solid #ff9000;
-	    border-radius: 0.2rem;
-	    margin: 0;
-	    color: #f3a847;
-	    box-shadow: 0rem 0rem 0.3rem #febd69;
-    }
-  } 
-
-  /* &__search{
-    display: flex;
-    flex: 1;   /* It defines how much it spreads in width */
-    /* align-items: center;
-    border-radius: 1.5rem; */
-
-    
-  
-
-  
-
-  /* &__searchIcon {
-      padding: 0.3rem;
-      height: 2.5rem !important;
-      background-color: #cd9042;
-         
-    } */
-  
-    &__nav{
+   
+      &__nav{
       display: flex;
       justify-content: space-evenly;
         }
@@ -162,6 +145,16 @@
     }
   }
 
+  #yourStore{
+    #storeIcon{
+      color: #f0c14b;
+     
+    }
+    &:hover #storeIcon{
+      color: #febd69;
+    }
+    
+  }
 
 
 

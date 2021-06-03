@@ -1,20 +1,23 @@
+import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { useDispatch, connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { fetchProduct, editProduct } from '../../../redux/Product/product.actions';
 import ProductForm from '../ProductForm';
 
 
 const EditYourProduct = (props) => {
-  console.log(props);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchProduct(props.match.params.id));
-  })
+  }, [])
 
-  const onFormSubmit = (formValues) => {
-
+  const onSubmit = (formValues) => {
+    dispatch(editProduct(props.match.params.id, formValues));
+    history.push('/products');
   }
   if (!props.product) {
     return (
@@ -24,11 +27,9 @@ const EditYourProduct = (props) => {
     )
   }
   return (
-    <div>
-      <ProductForm
-        initialValues={props.product}
-        onSubmit={onFormSubmit} />
-    </div>
+    <ProductForm
+      onSubmit={onSubmit}
+      initialValues={_.pick(props.product, 'title', 'price', 'image', 'description')} />
   )
 }
 

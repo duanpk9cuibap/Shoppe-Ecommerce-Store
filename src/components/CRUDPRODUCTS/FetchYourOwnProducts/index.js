@@ -19,7 +19,6 @@ function FetchYourOwnProducts() {
     dispatch(fetchProducts());
   });
 
-
   const renderProducts = () => {
     return products.map(product => {
       if (currentUser) {
@@ -30,8 +29,8 @@ function FetchYourOwnProducts() {
                 <img src={product.image} className="card-img-top card__img" alt="..." />
                 <div className="card-body">
                   <h5 className="card-title">{product.title}</h5>
-                  <a href={`/products/edit/${product.id}`}><button id="edit">Edit</button></a>
-                  <a href="#"><button id="delete">Delete</button></a>
+                  <Link to={`/products/edit/${product.id}`}><button id="edit">Edit</button></Link>
+                  <Link to={`/products/delete/${product.id}`}><button id="delete">Delete</button></Link>
                 </div>
               </div>
             </div>
@@ -42,12 +41,30 @@ function FetchYourOwnProducts() {
   }
 
   if (currentUser) {
+
+    const renderYourDatas = () => {
+      let count = 0;
+      products.map(product => count = currentUser.id === product.userId ? count += 1 : count)
+      return count > 0 ?
+        ''
+        :
+        (<div className="yourProducts__datas">
+          <h5>You haven't created any products yet!</h5>
+        </div>)
+    }
+
     return (
-      <>
-        <h5>Manage Products</h5>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 list-products">
+      <div className="yourProducts">
+        <div className="yourProducts__title"><h4>LIST OF YOUR PRODUCTS</h4></div>
+        {renderYourDatas()}
+        <div className="yourProducts__addNew">
+          <Link to='/products/new'>
+            <button>Add your new product</button>
+          </Link>
+        </div>
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
           {renderProducts()}</div>
-      </>
+      </div>
     )
   }
   else {
@@ -62,7 +79,7 @@ function FetchYourOwnProducts() {
           Start selling on Shoppe...
                   </button>
         <br />
-        <Link to='/login'><button className="signIn">Sign in</button></Link>
+        <Link to='/login'><button className="signIn">Sign in to continue...</button></Link>
       </div>
     )
   }

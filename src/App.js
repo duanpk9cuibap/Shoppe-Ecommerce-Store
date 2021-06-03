@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route,useLocation, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useLocation, withRouter } from 'react-router-dom';
 import { checkUserSession } from './redux/User/user.actions';
 
 //pages
@@ -15,14 +15,16 @@ import Checkout from './components/Checkout';
 import Footer from './components/Footer';
 import FetchYourOwnProducts from './components/CRUDPRODUCTS/FetchYourOwnProducts';
 import EditYourProduct from './components/CRUDPRODUCTS/EditYourProduct';
+import DeleteProduct from './components/CRUDPRODUCTS/DeleteProduct';
+import Search from './pages/Search';
 
 
 function _ScrollToTop(props) {
-    const { pathname } = useLocation();
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
-    return props.children
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return props.children
 }
 const ScrollToTop = withRouter(_ScrollToTop)
 
@@ -37,38 +39,51 @@ const App = () => {
 
   return (
     <Router>
-    <ScrollToTop>
-      <div className="app">
-        <Header />
+      <ScrollToTop>
+        <div className="app">
+          <Header />
 
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+              <Footer />
+            </Route>
 
-          <Route path='/login'
-            render={() => <Signin />} />
+            <Route exact path='/login'>
+              <Signin />
+              <Footer />
+            </Route>
 
-          <Route path='/registration'
-            render={() => <Signup />}>
-          </Route>
+            <Route exact path='/registration'>
+              <Signup />
+              <Footer />
+            </Route>
 
-          <Route path='/products/new'
-            render={() => <CreateProduct />} />
+            <Route path='/products/new'
+              render={() => <CreateProduct />} />
 
-          <Route exact path='/products' render={() => <FetchYourOwnProducts />} />
+            <Route exact path='/products' render={() => <FetchYourOwnProducts />} />
 
-          <Route path='/products/edit/:id' exact component={EditYourProduct} />
+            <Route path='/products/delete/:id' exact component={DeleteProduct} />
 
-          <Route path='/recovery'
-            render={() => <ResetPassword />} />
+            <Route path="/products/edit/:id" exact component={EditYourProduct} />
 
-          <Route path='/checkout'
-            render={() => <Checkout />} />
+            <Route path="/search" exact component={Search} />
 
-        </Switch>
-        <Footer />
-      </div>
+            <Route exact path='/recovery'>
+              <Home />
+              <ResetPassword />
+            </Route>
+
+            <Route exact path='/checkout'>
+              <Checkout />
+              <br />
+              <Footer />
+            </Route>
+
+          </Switch>
+
+        </div>
       </ScrollToTop>
     </Router >
   );

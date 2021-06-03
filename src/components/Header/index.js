@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './styles.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,9 +7,9 @@ import { selectCartItemsCount } from '../../redux/Cart/cart.selectors';
 
 import Logo from '../../assets/Logo.png';
 
-import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import StoreIcon from '@material-ui/icons/Store';
+import { searchProduct } from '../../redux/Search/search.action';
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -21,22 +21,29 @@ function Header() {
   const { currentUser, totalNumCartItems } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const onSignOut = () => {
     dispatch(signOutUserStart());
     history.goBack();
   }
 
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    dispatch(searchProduct(searchTerm));
+  }
+
   return (
     <div className="header">
-      <Link to='/'>
-        <img className="header__logo"
-          src={Logo} alt="" />
-      </Link>
+      <div className="header__logo">
+        <Link to='/'>
+          <img src={Logo} alt="" />
+        </Link>
+      </div>
 
       <div className="header__search">
-        <form className="header__search__form">
-          <input type="text" className="header__search__form__input" />
+        <form onSubmit={onSearchSubmit} value={searchTerm} className="header__search__form">
+          <input onChange={(e) => setSearchTerm(e.target.value)} type="text" className="header__search__form__input" />
           <div className="header__search__form__right">
             <button type="submit">Search</button>
           </div>
@@ -75,8 +82,8 @@ function Header() {
           </span>
         </Link>
           :
-          <Link to="/products" className="header__option" >
-            <span className="header__optionLineOne"> <StoreIcon /></span>
+          <Link to="/products" id="yourStore" className="header__option" >
+            <span id="storeIcon" className="header__optionLineOne"> <StoreIcon /></span>
             <span className="header__optionLineTwo">
               Your Store
           </span>

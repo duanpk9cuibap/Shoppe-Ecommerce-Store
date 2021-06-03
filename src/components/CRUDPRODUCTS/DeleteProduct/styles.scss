@@ -1,0 +1,23 @@
+modal__btn{
+  button{
+border: 1px solid;
+margin-top: 10px;
+border-color: #a88734 #9c7e31 #846a29 ;
+color: #111;
+width: 7rem;
+border-radius: 3px;
+margin-right: 1rem;
+margin-bottom: 0.7rem;
+
+&:hover{
+  box-shadow: 1px 4px 5px 1px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+  }
+  .delete{
+    background-color: #C82333;
+  }
+  .cancel{
+    background-color: #f0c14b;
+  }
+}

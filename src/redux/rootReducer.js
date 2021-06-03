@@ -6,12 +6,14 @@ import { reducer as formReducer } from 'redux-form';
 import userReducer from './User/user.reducer';
 import cartReducer from './Cart/cart.reducer'
 import productReducer from './Product/product.reducer';
+import searchReducer from './Search/search.reducer';
 
 export const rootReducer = combineReducers({
   user: userReducer,
   cartData: cartReducer,
   form: formReducer,
-  products: productReducer
+  products: productReducer,
+  search: searchReducer
 })
 
 export const configStorage = ({

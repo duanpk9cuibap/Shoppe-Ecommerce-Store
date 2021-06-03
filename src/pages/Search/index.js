@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductsSearchResult from '../../components/ProductsSearchResults'
 
 function Search() {
   return (
     <div className="searchPage">
-      Test
+      <ProductsSearchResult/>
     </div>
   )
 }

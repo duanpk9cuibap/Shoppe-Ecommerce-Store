@@ -4,6 +4,7 @@ const productTypes = {
   FETCH_PRODUCT: 'FETCH_PRODUCT',
   DELETE_PRODUCT: 'DELETE_PRODUCT',
   EDIT_PRODUCT: 'EDIT_PRODUCT'
+
 };
 
 export default productTypes;

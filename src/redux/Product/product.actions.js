@@ -31,8 +31,9 @@ export const fetchProduct = (id) => async dispatch => {
   })
 };
 
+
 export const editProduct = (id, formValues) => async dispatch => {
-  const response = await apis.put(`products/${id}`, formValues);
+  const response = await apis.patch(`products/${id}`, formValues);
   dispatch({
     type: productTypes.EDIT_PRODUCT,
     payload: response.data
@@ -46,3 +47,4 @@ export const deleteProduct = (id) => async dispatch => {
     payload: id
   })
 }
+

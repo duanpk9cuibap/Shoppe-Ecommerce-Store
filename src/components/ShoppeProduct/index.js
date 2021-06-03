@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../../redux/Cart/cart.actions';
 import { useHistory } from 'react-router-dom';
 import { fetchProducts } from '../../redux/Product/product.actions';
 
-import StarIcon from '@material-ui/icons/Star';
 import './styles.scss';
+import Pagination from '../Pagination';
+import ProductCard from '../ProductCard';
 
 const mapState = (state) => ({
   products: Object.values(state.products)
@@ -13,51 +13,44 @@ const mapState = (state) => ({
 
 function ShoppeProduct() {
 
-  /* const { title, image, price } = product; */
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
+
 
   useEffect(() => {
     dispatch(fetchProducts());
   });
 
-  const handleAddToCart = (product) => {
-    dispatch(
-      addProduct(product)
-    );
-    history.push('/checkout')
-  }
+  // Get current products
+  const indexOfLastProducts = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProducts - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProducts);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const renderHomepageProduct = () => {
-    return products.map(product => {
+    return currentProducts.map(product => {
       return (
-        
-        <div className="col list-products__card">
-              <div className="card h-100">
-                <img src={product.image} className="card-img-top card__img" alt="..." />
-                <div className="card-body">
-                  <h5 id ="card__title" className="card-title">{product.title}</h5>
-                </div>
-                <div className="card-footer">
-              <small className="text-muted">
-                $
-             <strong>{product.price}</strong>
-              </small>
-              <button className="addToCart" onClick={() => handleAddToCart(product)}>
-            Add to basket
-        </button>
-            </div>
-          </div>
-              </div>
-            
+        <ProductCard product={product} />
       )
     })
   }
 
   return (
-    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 list-products">
-      {renderHomepageProduct()}
+    <div className="productPage">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
+        {renderHomepageProduct()}
+      </div>
+      <div className="pagi">
+        <Pagination
+          totalProducts={products.length}
+          productsPerPage={productsPerPage}
+          paginate={paginate} /></div>
     </div>
   )
 }
