@@ -54,7 +54,7 @@ export function* signOutUser() {
     yield auth.signOut();
     yield put(
       signOutUserSuccess()
-    )
+    );
   }
   catch (err) {
     /* console.log(err); */

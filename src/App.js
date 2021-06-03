@@ -51,11 +51,13 @@ const App = () => {
 
             <Route exact path='/login'>
               <Signin />
+              <br />
               <Footer />
             </Route>
 
             <Route exact path='/registration'>
               <Signup />
+              <br />
               <Footer />
             </Route>
 
@@ -71,8 +73,9 @@ const App = () => {
             <Route path="/search" exact component={Search} />
 
             <Route exact path='/recovery'>
-              <Home />
               <ResetPassword />
+              <br />
+              <Footer />
             </Route>
 
             <Route exact path='/checkout'>

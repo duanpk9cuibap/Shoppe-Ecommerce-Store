@@ -92,7 +92,7 @@ function Checkout() {
                             <tbody>
                               <tr>
                                 <td>
-                                  <button onClick={() => history.goBack()}>
+                                  <button onClick={() => history.push('/')}>
                                     Continue Shopping
                                   </button>
                                 </td>

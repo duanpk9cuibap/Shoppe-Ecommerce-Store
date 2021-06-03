@@ -25,12 +25,13 @@ function Header() {
 
   const onSignOut = () => {
     dispatch(signOutUserStart());
-    history.goBack();
+    history.push('/');
   }
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
     dispatch(searchProduct(searchTerm));
+    history.push('/search');
   }
 
   return (
@@ -62,7 +63,7 @@ function Header() {
           </span>
         </Link>
           :
-          <Link className="header__option" to='/signout'>
+          <div className="header__option">
             <span className="header__optionLineOne">
               Hello
             </span>
@@ -70,7 +71,7 @@ function Header() {
               className="header__optionLineTwo">
               Sign out
           </span>
-          </Link>
+          </div>
         }
 
         {!currentUser ? <Link className="header__option" to="/products">
