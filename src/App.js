@@ -17,6 +17,8 @@ import FetchYourOwnProducts from './components/CRUDPRODUCTS/FetchYourOwnProducts
 import EditYourProduct from './components/CRUDPRODUCTS/EditYourProduct';
 import DeleteProduct from './components/CRUDPRODUCTS/DeleteProduct';
 import Search from './pages/Search';
+import Payment from './components/Payment';
+import ProductDetails from './components/ProductDetails';
 
 
 function _ScrollToTop(props) {
@@ -70,7 +72,13 @@ const App = () => {
 
             <Route path="/products/edit/:id" exact component={EditYourProduct} />
 
-            <Route path="/search" exact component={Search} />
+            <Route path="/products/:id" exact component={ProductDetails} />
+
+            <Route exact path="/search">
+              <Search />
+              <br />
+              <Footer />
+            </Route>
 
             <Route exact path='/recovery'>
               <ResetPassword />
@@ -82,6 +90,11 @@ const App = () => {
               <Checkout />
               <br />
               <Footer />
+            </Route>
+
+            <Route exact path='/payment'>
+              <Payment />
+
             </Route>
 
           </Switch>

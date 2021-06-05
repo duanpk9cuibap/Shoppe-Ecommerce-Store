@@ -1,0 +1,38 @@
+.productDetails{
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 4.5rem;
+
+  @media only screen and (max-width: 62rem){
+    margin: 2.5rem 3.5rem;
+  }
+  @media only screen and (max-width: 48rem){
+    margin: 2rem 2.5rem;
+  }
+  @media only screen and (max-width: 36rem){
+    margin: 1.5rem 1.5rem;
+  }
+
+  &__title{
+    margin-bottom: 1rem;
+  }
+
+  img{
+    max-width: 50%;
+    height: auto;
+      }
+  
+      &__body{
+       .addToCart{
+        background-color: #f0c14b;
+        border: 1px solid;
+        border-color: #a88734 #9c7e31 #846a29 ;
+        border-radius: 1rem;
+        color: #111;
+        width: 30%;
+        margin: 0;
+       } 
+      }
+}

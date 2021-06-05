@@ -1,4 +1,3 @@
-import { searchProduct } from './search.action.js';
 import searchTypes from './search.types.js';
 
 const searchReducer = (state = {}, action) => {

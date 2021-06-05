@@ -33,6 +33,8 @@ function ShoppeProduct() {
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
+
+
   const renderHomepageProduct = () => {
     return currentProducts.map(product => {
       return (
@@ -40,6 +42,8 @@ function ShoppeProduct() {
       )
     })
   }
+
+
 
   return (
     <div className="productPage">
@@ -50,7 +54,8 @@ function ShoppeProduct() {
         <Pagination
           totalProducts={products.length}
           productsPerPage={productsPerPage}
-          paginate={paginate} /></div>
+          paginate={paginate} />
+      </div>
     </div>
   )
 }

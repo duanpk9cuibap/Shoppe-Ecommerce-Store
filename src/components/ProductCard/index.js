@@ -18,14 +18,19 @@ function ProductCard({ product }) {
     history.push('/checkout')
   }
 
+  const onCardClick = (e) => {
+    e.preventDefault();
+    history.push(`products/${product.id}`)
+  }
+
   return (
     <div className="col list-products__card">
-      <div className="card h-100">
+      <div onClick={onCardClick} className="card h-100">
         <img src={product.image} className="card-img-top card__img" alt="..." />
         <div className="card-body">
           <h5 id="card__title" className="card-title">{product.title}</h5>
         </div>
-        <div className="card-footer">
+        <div onClick={e => e.stopPropagation()} className="card-footer">
           <small className="text-muted">
             $
              <strong>{product.price}</strong>
