@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import './styles.scss';
 import { addProduct } from '../../redux/Cart/cart.actions';
+import Footer from '../Footer';
 
 function ProductDetails(props) {
 
@@ -34,17 +35,21 @@ function ProductDetails(props) {
       return <div>Loading...</div>
     } else {
       return (
-        <div class="card mb-3 productDetails">
-          <h5 class="card-title productDetails__title">{product.title}</h5>
-          <img src={product.image} class="card-img-top" alt="..." />
+        <div className="productDetailsPage">
+          <div class="card mb-3 productDetails">
+            <h5 class="card-title productDetails__title">{product.title}</h5>
+            <img src={product.image} class="card-img-top" alt="..." />
 
-          <div class="card-body productDetails__body">
-            <p class="card-text"><strong>Description:</strong> {product.description}</p>
-            <p class="card-text"><strong class="text-muted">${product.price}</strong></p>
-            <button className="addToCart" onClick={() => handleAddToCart(product)}>
-              Add to basket
-        </button>
+            <div class="card-body productDetails__body">
+              <p class="card-text"><strong>Description:</strong> {product.description}</p>
+              <p class="card-text"><strong class="text-muted">${product.price}</strong></p>
+              <button className="addToCart" onClick={() => handleAddToCart(product)}>
+                Add to basket
+              </button>
+            </div>
           </div>
+          <br />
+          <Footer />
         </div>
       )
     }

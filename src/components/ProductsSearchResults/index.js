@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/Product/product.actions';
 import { useHistory } from 'react-router-dom';
 import ProductCard from '../ProductCard';
 
 import './styles.scss';
+import Pagination from '../Pagination';
 
 const mapState = ({ search, products }) => ({
   searchTerm: search.searchTerm,
@@ -17,11 +18,22 @@ function ProductsSearchResult() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
+
   useEffect(() => {
     dispatch(fetchProducts());
   });
 
   const searchedProducts = products.filter(product => product.title.indexOf(searchTerm) > 1 || product.description.indexOf(searchTerm) > 1)
+
+  // Get current products
+  const indexOfLastProducts = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProducts - productsPerPage;
+  const currentProducts = searchedProducts.slice(indexOfFirstProduct, indexOfLastProducts);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const renderSearchResults = () => {
 
@@ -30,7 +42,7 @@ function ProductsSearchResult() {
         <div>Please type something to search</div>
       )
     } else if (searchTerm) {
-      return searchedProducts.map(product => {
+      return currentProducts.map(product => {
         return (
           <ProductCard product={product} />
         )
@@ -40,9 +52,15 @@ function ProductsSearchResult() {
 
   return (
     <div className="productResults">
-      <h6><strong>{searchedProducts.length} results for "{searchTerm}"</strong></h6>
+      <strong style={{ marginLeft: "2rem" }}>{searchedProducts.length} results for "{searchTerm}"</strong>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
         {renderSearchResults()}
+      </div>
+      <div className="pagi">
+        <Pagination
+          totalProducts={searchedProducts.length}
+          productsPerPage={productsPerPage}
+          paginate={paginate} />
       </div>
     </div>
   )
