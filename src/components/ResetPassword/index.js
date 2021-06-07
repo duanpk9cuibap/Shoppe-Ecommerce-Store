@@ -25,6 +25,7 @@ function ResetPassword() {
       dispatch(
         resetUserState()
       )
+      console.log(alert("A password reset link was sent. Please check out your email and click the link in the email to create a new password."));
       history.push('/login');
     }
   }, [resetPasswordSuccess])
@@ -38,6 +39,7 @@ function ResetPassword() {
   const onFormSubmit = e => {
     e.preventDefault();
     dispatch(resetPasswordStart({ email }));
+
   }
 
   return (
