@@ -24,7 +24,7 @@ function ProductCard({ product }) {
   }
 
   return (
-    <div className="col list-products__card">
+    <div key={product.id} className="col list-products__card">
       <div onClick={onCardClick} className="card h-100">
         <img src={product.image} className="card-img-top card__img" alt="..." />
         <div className="card-body">
@@ -33,11 +33,11 @@ function ProductCard({ product }) {
         <div onClick={e => e.stopPropagation()} className="card-footer">
           <small className="text-muted">
             $
-             <strong>{product.price}</strong>
+            <strong>{product.price}</strong>
           </small>
           <button className="addToCart" onClick={() => handleAddToCart(product)}>
             Add to basket
-        </button>
+          </button>
         </div>
       </div>
     </div>
