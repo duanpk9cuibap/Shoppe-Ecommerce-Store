@@ -43,9 +43,9 @@ function Product(product) {
       <img src={image} alt="" />
       <button className="addToCart" onClick={() => handleAddToCart(product)}>
         Add to basket
-        </button>
+      </button>
     </div>
   )
 }
 
-export default Product
+export default Product;

@@ -7,15 +7,14 @@ import Logo from '../../../assets/Logo.png';
 
 function ProductForm(props) {
 
+  const renderError = ({ error, touched }) => {
+    return touched && error ?
+      (
+        <div id="error">{error}</div>
+      ) : ""
+  }
+
   const renderInput = ({ input, idFor, label, placeholder, meta }) => {
-
-    const renderError = ({ error, touched }) => {
-      return touched && error ?
-        (
-          <div id="error">{error}</div>
-        ) : ""
-    }
-
     return (
       <div className="mb-3">
         <label htmlFor={idFor} className="form-label">
@@ -28,14 +27,6 @@ function ProductForm(props) {
   }
 
   const renderTextarea = ({ input, label, meta }) => {
-
-    const renderError = ({ error, touched }) => {
-      return touched && error ?
-        (
-          <div id="error">{error}</div>
-        ) : ""
-    }
-
     return (
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
