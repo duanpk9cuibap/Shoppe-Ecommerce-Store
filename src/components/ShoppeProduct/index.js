@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { fetchProducts } from '../../redux/Product/product.actions';
+import { Spin } from "antd";
 
 import './styles.scss';
 import Pagination from '../Pagination';
@@ -19,11 +20,13 @@ function ShoppeProduct() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
+  const [loading, setLoading] = useState(true);
 
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  });
+  useEffect(async () => {
+    await dispatch(fetchProducts());
+    setLoading(false);
+  }, []);
 
   // Get current products
   const indexOfLastProducts = currentPage * productsPerPage;
@@ -33,8 +36,6 @@ function ShoppeProduct() {
   // Change page
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
-
-
   const renderHomepageProduct = () => {
     return currentProducts.map(product => {
       return (
@@ -43,32 +44,23 @@ function ShoppeProduct() {
     })
   }
 
-
-
   return (
     <div className="productPage">
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
-        {renderHomepageProduct()}
-      </div>
-      <div className="pagi">
-        <Pagination
-          totalProducts={products.length}
-          productsPerPage={productsPerPage}
-          paginate={paginate} />
-      </div>
+      <Spin spinning={loading} tip="Loading...">
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
+          {renderHomepageProduct()}
+        </div>
+        <div className="pagi">
+          <Pagination
+            totalProducts={products.length}
+            productsPerPage={productsPerPage}
+            paginate={paginate} />
+        </div>
+      </Spin>
     </div>
   )
 }
 
 export default ShoppeProduct;
-
-
-{/* <div className="product__rating">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p><StarIcon /></p>
-            ))}
-        </div> */}
 
 

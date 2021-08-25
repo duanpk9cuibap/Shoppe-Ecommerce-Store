@@ -5,9 +5,7 @@ import { addProduct } from '../../redux/Cart/cart.actions';
 
 import './styles.scss';
 
-
 function ProductCard({ product }) {
-
   const dispatch = useDispatch();
   const history = useHistory();
 

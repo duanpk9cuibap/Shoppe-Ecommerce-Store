@@ -1,7 +1,6 @@
 import apis from './apis.js';
 import productTypes from './product.types.js';
 
-
 export const createNewProduct = formValues => async (dispatch, getState) => {
   const { id } = getState().user.currentUser;
   const userId = id;

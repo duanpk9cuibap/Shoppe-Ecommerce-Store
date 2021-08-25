@@ -1,13 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchProduct } from '../../redux/Product/product.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import './styles.scss';
+//import './styles.scss';
+import 'antd/dist/antd.css';
+import styled from 'styled-components';
 import { addProduct } from '../../redux/Cart/cart.actions';
 import Footer from '../Footer';
+import { Card, Row, Col, Image, Typography, Divider, Button, Checkbox } from 'antd';
+import { StarOutlined, StarFilled, EnvironmentOutlined, LockOutlined, MailOutlined, FacebookOutlined, TwitterOutlined, InstagramOutlined } from "@ant-design/icons";
 
-function ProductDetails(props) {
+const Container = styled.div`
+.ant-col{
+  padding: 2rem 1rem;
+}
+.anticon svg {
+  display: block;
+}
+.ant-btn{
+  background-color: #F7CA00;
+    border-radius: 1rem;
+    width: 100%;
+}
+`
+const { Title } = Typography;
+
+const ProductDetails = (props) => {
+  const [visible, setVisible] = useState(false); //Preview Image
 
   const mapState = (state) => ({
     product: state.products[props.match.params.id]
@@ -18,10 +38,8 @@ function ProductDetails(props) {
   const history = useHistory();
 
   useEffect(() => {
-
     dispatch(fetchProduct(props.match.params.id))
-
-  }, [])
+  }, [props.match.params.id])
 
   const handleAddToCart = (product) => {
     dispatch(
@@ -34,23 +52,66 @@ function ProductDetails(props) {
     if (!product) {
       return <div>Loading...</div>
     } else {
+      const { title, image, price, description } = product;
+      console.log((Number(price) / 7));
       return (
-        <div className="productDetailsPage">
-          <div class="card mb-3 productDetails">
-            <h5 class="card-title productDetails__title">{product.title}</h5>
-            <img src={product.image} class="card-img-top" alt="..." />
+        <Container>
+          <Row>
+            <Col span={24} md={7}>
+              <Image
+                preview={{ visible: false }}
+                width="100%"
+                src={image}
+                onClick={() => setVisible(true)}
+              />
+              <div style={{ display: 'none' }}>
+                <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
+                  <Image src={image} />
+                  <Image src="https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp" />
+                  <Image src="https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp" />
+                </Image.PreviewGroup>
+              </div>
+            </Col>
+            <Col span={24} md={11}>
+              <Title level={4}>{title}</Title>
+              <StarFilled style={{ color: "#f0c14b" }} />
+              <StarFilled style={{ color: "#f0c14b" }} />
+              <StarFilled style={{ color: "#f0c14b" }} />
+              <StarFilled style={{ color: "#f0c14b" }} />
+              <StarOutlined />
+              <Divider />
+              <Title level={5} >About this item:</Title>
+              <p>{description}</p>
+            </Col>
+            <Col span={24} md={6}>
+              <Card style={{ borderRadius: "1rem" }}>
+                <Title level={4} style={{ color: "#B82704" }}>$ {product.price}</Title>
+                <strong>+ ${Math.ceil(Number(price) / 7)}</strong>
+                <Title level={5} style={{ color: "#5680B9" }}>Shipping & Import Fees Deposit to Vietnam</Title>
+                <Divider dashed />
+                <span><EnvironmentOutlined /> Deliver to Viet Nam.</span>
+                <br />
+                <br />
+                <Title level={5} style={{ color: "#B82704" }}>In stock soon.</Title>
+                <Title level={5} style={{ marginTop: "-5px" }}>Order it now.</Title>
+                <Button onClick={() => handleAddToCart(product)}>Add to cart</Button>
+                <Divider dashed />
+                <span style={{ color: "#5680B9" }}><LockOutlined /> Secure transaction</span>
+                <br />
+                <span>Ships from Shoppe.com</span>
+                <br />
+                <span>Sold by Shoppe.com</span>
+                <Divider style={{ marginBottom: "5px" }} />
+                <Title level={5} style={{ color: "#B82704" }}>Details</Title>
+                <span>Return Policy:</span> <span style={{ color: "#5680B9" }}>This item is returnable</span>
+                <Checkbox>Add a gift receipt for easy returns</Checkbox>
+              </Card>
+              <span>Share: <MailOutlined style={{ marginRight: "0.3rem", marginLeft: "0.3rem" }} /> <FacebookOutlined style={{ marginRight: "0.3rem" }} /> <TwitterOutlined style={{ marginRight: "0.3rem" }} /> <InstagramOutlined />
+              </span>
+            </Col>
+          </Row>
+        </Container>
 
-            <div class="card-body productDetails__body">
-              <p class="card-text"><strong>Description:</strong> {product.description}</p>
-              <p class="card-text"><strong class="text-muted">${product.price}</strong></p>
-              <button className="addToCart" onClick={() => handleAddToCart(product)}>
-                Add to basket
-              </button>
-            </div>
-          </div>
-          <br />
-          <Footer />
-        </div>
       )
     }
   }
