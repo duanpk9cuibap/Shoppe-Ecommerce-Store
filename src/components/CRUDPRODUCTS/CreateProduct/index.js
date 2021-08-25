@@ -13,6 +13,7 @@ function CreateProduct() {
 
   const onFormSubmit = (formValues) => {
     dispatch(createNewProduct(formValues));
+    console.log("formValues", formValues);
     history.push('/products');
   }
 
