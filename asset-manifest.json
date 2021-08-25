@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/shoppe/static/css/main.ae4b641d.chunk.css",
+    "main.js": "/shoppe/static/js/main.ceb4af2f.chunk.js",
+    "main.js.map": "/shoppe/static/js/main.ceb4af2f.chunk.js.map",
+    "runtime-main.js": "/shoppe/static/js/runtime-main.8d83a543.js",
+    "runtime-main.js.map": "/shoppe/static/js/runtime-main.8d83a543.js.map",
+    "static/css/2.5f5f9133.chunk.css": "/shoppe/static/css/2.5f5f9133.chunk.css",
+    "static/js/2.e983471c.chunk.js": "/shoppe/static/js/2.e983471c.chunk.js",
+    "static/js/2.e983471c.chunk.js.map": "/shoppe/static/js/2.e983471c.chunk.js.map",
+    "index.html": "/shoppe/index.html",
+    "static/css/2.5f5f9133.chunk.css.map": "/shoppe/static/css/2.5f5f9133.chunk.css.map",
+    "static/css/main.ae4b641d.chunk.css.map": "/shoppe/static/css/main.ae4b641d.chunk.css.map",
+    "static/js/2.e983471c.chunk.js.LICENSE.txt": "/shoppe/static/js/2.e983471c.chunk.js.LICENSE.txt",
+    "static/media/Logo.448d3753.png": "/shoppe/static/media/Logo.448d3753.png",
+    "static/media/banner5.459635da.jpg": "/shoppe/static/media/banner5.459635da.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d83a543.js",
+    "static/css/2.5f5f9133.chunk.css",
+    "static/js/2.e983471c.chunk.js",
+    "static/css/main.ae4b641d.chunk.css",
+    "static/js/main.ceb4af2f.chunk.js"
+  ]
+}
