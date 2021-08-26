@@ -41,10 +41,13 @@ const EditYourProduct = (props) => {
     )
   } else
     return (
-      /*  <ProductForm
-         onSubmit={onSubmit}
-         initialValues={_.pick(product, 'title', 'price', 'image', 'description')} /> */
-      <FormAnt onFinish={onFinish} />
+      <>
+        <ProductForm
+          //onSubmit={onSubmit}
+          onFinish={onFinish}
+          initialValues={_.pick(product, 'title', 'price', 'images', 'description')} />
+        {/* <FormAnt onFinish={onFinish} /> */}
+      </>
     )
 }
 

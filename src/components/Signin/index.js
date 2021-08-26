@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Button, Divider, notification } from 'antd';
+import { Form, Input, Button, Divider } from 'antd';
 
 import { emailSignInStart, googleSignInStart } from './../../redux/User/user.actions';
 
