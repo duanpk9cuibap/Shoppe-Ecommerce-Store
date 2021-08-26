@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/shoppe/static/css/main.ae4b641d.chunk.css",
-    "main.js": "/shoppe/static/js/main.95f32b03.chunk.js",
-    "main.js.map": "/shoppe/static/js/main.95f32b03.chunk.js.map",
-    "runtime-main.js": "/shoppe/static/js/runtime-main.8d83a543.js",
-    "runtime-main.js.map": "/shoppe/static/js/runtime-main.8d83a543.js.map",
-    "static/css/2.5f5f9133.chunk.css": "/shoppe/static/css/2.5f5f9133.chunk.css",
-    "static/js/2.0551a1b1.chunk.js": "/shoppe/static/js/2.0551a1b1.chunk.js",
-    "static/js/2.0551a1b1.chunk.js.map": "/shoppe/static/js/2.0551a1b1.chunk.js.map",
-    "index.html": "/shoppe/index.html",
-    "static/css/2.5f5f9133.chunk.css.map": "/shoppe/static/css/2.5f5f9133.chunk.css.map",
-    "static/css/main.ae4b641d.chunk.css.map": "/shoppe/static/css/main.ae4b641d.chunk.css.map",
-    "static/js/2.0551a1b1.chunk.js.LICENSE.txt": "/shoppe/static/js/2.0551a1b1.chunk.js.LICENSE.txt",
-    "static/media/Logo.448d3753.png": "/shoppe/static/media/Logo.448d3753.png",
-    "static/media/banner5.459635da.jpg": "/shoppe/static/media/banner5.459635da.jpg"
+    "main.css": "/shoppe_app/static/css/main.b5076a45.chunk.css",
+    "main.js": "/shoppe_app/static/js/main.cb44c72b.chunk.js",
+    "main.js.map": "/shoppe_app/static/js/main.cb44c72b.chunk.js.map",
+    "runtime-main.js": "/shoppe_app/static/js/runtime-main.01618ccd.js",
+    "runtime-main.js.map": "/shoppe_app/static/js/runtime-main.01618ccd.js.map",
+    "static/css/2.5f5f9133.chunk.css": "/shoppe_app/static/css/2.5f5f9133.chunk.css",
+    "static/js/2.caddb4b2.chunk.js": "/shoppe_app/static/js/2.caddb4b2.chunk.js",
+    "static/js/2.caddb4b2.chunk.js.map": "/shoppe_app/static/js/2.caddb4b2.chunk.js.map",
+    "index.html": "/shoppe_app/index.html",
+    "static/css/2.5f5f9133.chunk.css.map": "/shoppe_app/static/css/2.5f5f9133.chunk.css.map",
+    "static/css/main.b5076a45.chunk.css.map": "/shoppe_app/static/css/main.b5076a45.chunk.css.map",
+    "static/js/2.caddb4b2.chunk.js.LICENSE.txt": "/shoppe_app/static/js/2.caddb4b2.chunk.js.LICENSE.txt",
+    "static/media/Logo.448d3753.png": "/shoppe_app/static/media/Logo.448d3753.png",
+    "static/media/banner5.459635da.jpg": "/shoppe_app/static/media/banner5.459635da.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8d83a543.js",
+    "static/js/runtime-main.01618ccd.js",
     "static/css/2.5f5f9133.chunk.css",
-    "static/js/2.0551a1b1.chunk.js",
-    "static/css/main.ae4b641d.chunk.css",
-    "static/js/main.95f32b03.chunk.js"
+    "static/js/2.caddb4b2.chunk.js",
+    "static/css/main.b5076a45.chunk.css",
+    "static/js/main.cb44c72b.chunk.js"
   ]
 }
