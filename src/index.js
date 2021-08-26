@@ -9,11 +9,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
-      <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
-    </ HashRouter>
+    <React.StrictMode>
+      <HashRouter>
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
+      </ HashRouter>
+    </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );
