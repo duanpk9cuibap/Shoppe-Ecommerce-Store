@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/shoppe_app/static/css/main.b5076a45.chunk.css",
-    "main.js": "/shoppe_app/static/js/main.4101f171.chunk.js",
-    "main.js.map": "/shoppe_app/static/js/main.4101f171.chunk.js.map",
-    "runtime-main.js": "/shoppe_app/static/js/runtime-main.01618ccd.js",
-    "runtime-main.js.map": "/shoppe_app/static/js/runtime-main.01618ccd.js.map",
-    "static/css/2.5f5f9133.chunk.css": "/shoppe_app/static/css/2.5f5f9133.chunk.css",
-    "static/js/2.caddb4b2.chunk.js": "/shoppe_app/static/js/2.caddb4b2.chunk.js",
-    "static/js/2.caddb4b2.chunk.js.map": "/shoppe_app/static/js/2.caddb4b2.chunk.js.map",
-    "index.html": "/shoppe_app/index.html",
-    "static/css/2.5f5f9133.chunk.css.map": "/shoppe_app/static/css/2.5f5f9133.chunk.css.map",
-    "static/css/main.b5076a45.chunk.css.map": "/shoppe_app/static/css/main.b5076a45.chunk.css.map",
-    "static/js/2.caddb4b2.chunk.js.LICENSE.txt": "/shoppe_app/static/js/2.caddb4b2.chunk.js.LICENSE.txt",
-    "static/media/Logo.448d3753.png": "/shoppe_app/static/media/Logo.448d3753.png",
-    "static/media/banner5.459635da.jpg": "/shoppe_app/static/media/banner5.459635da.jpg"
+    "main.css": "/static/css/main.b5076a45.chunk.css",
+    "main.js": "/static/js/main.4101f171.chunk.js",
+    "main.js.map": "/static/js/main.4101f171.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3afe0844.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3afe0844.js.map",
+    "static/css/2.5f5f9133.chunk.css": "/static/css/2.5f5f9133.chunk.css",
+    "static/js/2.1d6c1b47.chunk.js": "/static/js/2.1d6c1b47.chunk.js",
+    "static/js/2.1d6c1b47.chunk.js.map": "/static/js/2.1d6c1b47.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.5f5f9133.chunk.css.map": "/static/css/2.5f5f9133.chunk.css.map",
+    "static/css/main.b5076a45.chunk.css.map": "/static/css/main.b5076a45.chunk.css.map",
+    "static/js/2.1d6c1b47.chunk.js.LICENSE.txt": "/static/js/2.1d6c1b47.chunk.js.LICENSE.txt",
+    "static/media/Logo.448d3753.png": "/static/media/Logo.448d3753.png",
+    "static/media/banner5.459635da.jpg": "/static/media/banner5.459635da.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.01618ccd.js",
+    "static/js/runtime-main.3afe0844.js",
     "static/css/2.5f5f9133.chunk.css",
-    "static/js/2.caddb4b2.chunk.js",
+    "static/js/2.1d6c1b47.chunk.js",
     "static/css/main.b5076a45.chunk.css",
     "static/js/main.4101f171.chunk.js"
   ]
