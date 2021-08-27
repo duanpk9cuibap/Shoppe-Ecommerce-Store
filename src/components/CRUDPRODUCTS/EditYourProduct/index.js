@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { fetchProduct, editProduct } from '../../../redux/Product/product.actions';
@@ -14,10 +14,12 @@ const EditYourProduct = (props) => {
     product: state.products[params.id]
   })
   const { product } = useSelector(mapState);
-  console.log("product", product);
 
   useEffect(() => {
-    dispatch(fetchProduct(params.id));
+    const currentProduct = async () => {
+      await dispatch(fetchProduct(params.id));
+    }
+    currentProduct();
   }, [params.id]);
 
 
