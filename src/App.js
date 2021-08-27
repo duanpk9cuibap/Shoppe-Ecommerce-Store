@@ -51,48 +51,48 @@ const App = () => {
               <Footer />
             </Route>
 
-            <Route exact path='/login'>
+            <Route exact path='/shoppe_app/login'>
               <Signin />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/registration'>
+            <Route exact path='/shoppe_app/registration'>
               <Signup />
               <br />
               <Footer />
             </Route>
 
-            <Route path='/products/new'
+            <Route path='/shoppe_app/products/new'
               render={() => <CreateProduct />} />
 
-            <Route exact path='/products' render={() => <FetchYourOwnProducts />} />
+            <Route exact path='/shoppe_app/products' render={() => <FetchYourOwnProducts />} />
 
-            <Route path='/products/delete/:id' exact component={DeleteProduct} />
+            <Route path='/shoppe_app/products/delete/:id' exact component={DeleteProduct} />
 
-            <Route path="/products/edit/:id" exact component={EditYourProduct} />
+            <Route path="/shoppe_app/products/edit/:id" exact component={EditYourProduct} />
 
-            <Route path="/products/:id" exact component={ProductDetails} />
+            <Route path="/shoppe_app/products/:id" exact component={ProductDetails} />
 
-            <Route exact path="/search">
+            <Route exact path="/shoppe_app/search">
               <Search />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/recovery'>
+            <Route exact path='/shoppe_app/recovery'>
               <ResetPassword />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/checkout'>
+            <Route exact path='/shoppe_app/checkout'>
               <Checkout />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/payment'>
+            <Route exact path='/shoppe_app/payment'>
               <Payment />
 
             </Route>

@@ -44,7 +44,7 @@ function ResetPassword() {
 
   return (
     <div className='resetpassword'>
-      <Link to='/'>
+      <Link to='/shoppe_app/'>
         <img
           className="resetpassword__logo"
           src={Logo} alt="" />

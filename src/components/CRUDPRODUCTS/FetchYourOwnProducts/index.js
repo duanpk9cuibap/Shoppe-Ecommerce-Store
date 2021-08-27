@@ -181,7 +181,7 @@ function FetchYourOwnProducts() {
             title="YOUR PRODUCT LIST"
             extra={
               <Button
-                onClick={() => history.push("/products/new")}>
+                onClick={() => history.push("/shoppe_app/products/new")}>
                 <PlusCircleOutlined /> Add your new product
               </Button>
             }

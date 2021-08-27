@@ -37,7 +37,7 @@ const Signin = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push('/');
+      history.push('/shoppe_app/');
     }
   }, [currentUser])
 
@@ -56,7 +56,7 @@ const Signin = () => {
   return (
     <Container>
       <div className="signin">
-        <Link to='/'>
+        <Link to='/shoppe_app/'>
           <img
             className="signin__logo"
             src={Logo} alt="" />

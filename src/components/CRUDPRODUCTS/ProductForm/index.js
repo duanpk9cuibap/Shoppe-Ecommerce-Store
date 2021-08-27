@@ -60,7 +60,7 @@ const ProductForm = (props) => {
   return (
     <Container>
       <div className="productForm">
-        <Link to='/'>
+        <Link to='/shoppe_app/'>
           <img
             className="productForm__logo"
             src={Logo} alt="" />

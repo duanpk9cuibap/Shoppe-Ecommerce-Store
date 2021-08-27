@@ -57,7 +57,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push('/');
+      history.push('/shoppe_app/');
     }
   }, [currentUser]);
 
@@ -71,7 +71,7 @@ const Signup = () => {
   return (
     <Container>
       <div className="signup">
-        <Link to='/'>
+        <Link to='/shoppe_app/'>
           <img
             className="signup__logo"
             src={Logo} alt="" />
@@ -156,7 +156,7 @@ const Signup = () => {
           </Form>
           <span>By creating an account, you agree to Shoppe's Conditions of Use and Privacy Notice.</span>
           <Divider dashed />
-          <span>Already have an account?<Link to="/login"> Sign in</Link></span>
+          <span>Already have an account?<Link to="/shoppe_app/login"> Sign in</Link></span>
         </div>
       </div>
     </Container>

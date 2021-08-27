@@ -25,19 +25,19 @@ function Header() {
 
   const onSignOut = () => {
     dispatch(signOutUserStart());
-    history.push('/');
+    history.push('/shoppe_app/');
   }
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
     dispatch(searchProduct(searchTerm));
-    history.push('/search');
+    history.push('/shoppe_app/search');
   }
 
   return (
     <div className="header">
       <div className="header__logo">
-        <Link to='/'>
+        <Link to='/shoppe_app/'>
           <img src={Logo} alt="" />
         </Link>
       </div>
@@ -54,7 +54,7 @@ function Header() {
 
       <div className="header__nav">
 
-        {!currentUser ? <Link to='/login' className="header__option">
+        {!currentUser ? <Link to='/shoppe_app/login' className="header__option">
           <span className="header__optionLineOne">
             Hello Guest!
           </span>
@@ -70,11 +70,11 @@ function Header() {
             <span onClick={onSignOut}
               className="header__optionLineTwo">
               Sign out
-          </span>
+            </span>
           </div>
         }
 
-        {!currentUser ? <Link className="header__option" to="/products">
+        {!currentUser ? <Link className="header__option" to="/shoppe_app/products">
           <span className="header__optionLineOne">
             Start
           </span>
@@ -83,11 +83,11 @@ function Header() {
           </span>
         </Link>
           :
-          <Link to="/products" id="yourStore" className="header__option" >
+          <Link to="/shoppe_app/products" id="yourStore" className="header__option" >
             <span id="storeIcon" className="header__optionLineOne"> <StoreIcon /></span>
             <span className="header__optionLineTwo">
               Your Store
-          </span>
+            </span>
           </Link>
         }
 
@@ -100,7 +100,7 @@ function Header() {
           </span>
         </div>
 
-        <Link to='/checkout' className="header__optionBasket">
+        <Link to='/shoppe_app/checkout' className="header__optionBasket">
           <span><ShoppingCartIcon /></span>
           <span className="header__optionLineTwo header__basketCount">
             {totalNumCartItems}
