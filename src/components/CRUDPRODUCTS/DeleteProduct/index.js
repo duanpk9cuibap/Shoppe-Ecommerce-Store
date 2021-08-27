@@ -11,7 +11,7 @@ function DeleteProduct(props) {
 
   useEffect(() => {
     dispatch(fetchProduct(props.match.params.id));
-  }, []);
+  });
 
   if (!props.product) {
     return (

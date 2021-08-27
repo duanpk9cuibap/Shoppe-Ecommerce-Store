@@ -11,16 +11,20 @@ import {
   Tooltip,
   Popconfirm,
   Image,
+  Tag
 } from 'antd';
 import _ from 'lodash';
 import styled from "styled-components";
-import { PlusCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, EditOutlined, DeleteOutlined, IdcardFilled } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './styles.scss';
 
 const Container = styled.div`
 .ant-spin-container{
   padding: 1.2rem;
+}
+.ant-btn-sm{
+margin: 5px;
 }
 .anticon svg {
   display: block;
@@ -38,12 +42,15 @@ function FetchYourOwnProducts() {
   const dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    dispatch(fetchProducts());
     if (currentUser) {
       setDataSource(products?.filter(item => currentUser.id === item.userId)
       )
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [])
 
   console.log(dataSource);
 
@@ -56,7 +63,7 @@ function FetchYourOwnProducts() {
       render: (id, { title, image }) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <Image
-            width={150}
+            width={250}
             src={image}
           >
           </Image>
@@ -65,11 +72,16 @@ function FetchYourOwnProducts() {
       )
     },
     {
-      title: "Categories",
-      dataIndex: "categories",
+      title: "Category",
+      dataIndex: "category",
       width: 120,
       align: "center",
-      key: "categories",
+      key: "category",
+      render: (text, { id, category }) => (
+        <Tag color={category === "Dog" ? 'geekblue' : 'green'} key={id}>
+          {category}
+        </Tag>
+      )
     },
     {
       title: "Price",
@@ -87,7 +99,7 @@ function FetchYourOwnProducts() {
       dataIndex: "actions",
       render: (id, record) => (
         <Container>
-          <Tooltip title="Edit product type">
+          <Tooltip title="Edit this product">
             <Button
               size="small"
               onClick={() => history.push(`/products/edit/${record.id}`)}
@@ -95,10 +107,9 @@ function FetchYourOwnProducts() {
               <EditOutlined theme="twoTone" />
             </Button>
           </Tooltip>
-          <Divider type="vertical" />
-          <Tooltip title="Delete product type">
+          <Tooltip title="Delete this product">
             <Popconfirm
-              title="Are you sure delete this product type?"
+              title="Are you sure delete this product?"
               placement="topRight"
               onConfirm={() => this.deleteProductType(record.id)}
               okText="Yes"
@@ -184,14 +195,7 @@ function FetchYourOwnProducts() {
         </>
         :
         <div className="loadingToSelling">
-          <button class="btn btn-secondary" type="button" disabled>
-            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-            <span class="visually-hidden"></span>
-          </button>
-          <button class="btn btn-secondary" type="button" disabled>
-            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-            Start selling on Shoppe...
-          </button>
+
           <br />
           <Signin />
 

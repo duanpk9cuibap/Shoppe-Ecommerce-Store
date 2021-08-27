@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 import styled from 'styled-components';
 import { addProduct } from '../../redux/Cart/cart.actions';
 import Footer from '../Footer';
-import { Card, Row, Col, Image, Typography, Divider, Button, Checkbox } from 'antd';
+import { Card, Row, Col, Image, Typography, Divider, Button, Checkbox, Carousel } from 'antd';
 import { StarOutlined, StarFilled, EnvironmentOutlined, LockOutlined, MailOutlined, FacebookOutlined, TwitterOutlined, InstagramOutlined } from "@ant-design/icons";
 
 const Container = styled.div`
@@ -52,23 +52,44 @@ const ProductDetails = (props) => {
     if (!product) {
       return <div>Loading...</div>
     } else {
-      const { title, image, price, description } = product;
+      const { title, image_1, image_2, image_3, price, description } = product;
       console.log((Number(price) / 7));
       return (
         <Container>
           <Row>
             <Col span={24} md={7}>
-              <Image
-                preview={{ visible: false }}
-                width="100%"
-                src={image}
-                onClick={() => setVisible(true)}
-              />
+              <Carousel effect="fade" autoplay>
+                <div>
+                  <Image
+                    preview={{ visible: false }}
+                    width="100%"
+                    src={image_1}
+                    onClick={() => setVisible(true)}
+                  />
+                </div>
+                <div>
+                  <Image
+                    preview={{ visible: false }}
+                    width="100%"
+                    src={image_2}
+                    onClick={() => setVisible(true)}
+                  />
+                </div>
+                <div>
+                  <Image
+                    preview={{ visible: false }}
+                    width="100%"
+                    src={image_3}
+                    onClick={() => setVisible(true)}
+                  />
+                </div>
+              </Carousel>
+
               <div style={{ display: 'none' }}>
                 <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis) }}>
-                  <Image src={image} />
-                  <Image src="https://gw.alipayobjects.com/zos/antfincdn/cV16ZqzMjW/photo-1473091540282-9b846e7965e3.webp" />
-                  <Image src="https://gw.alipayobjects.com/zos/antfincdn/x43I27A55%26/photo-1438109491414-7198515b166b.webp" />
+                  <Image src={image_1} />
+                  <Image src={image_2} />
+                  <Image src={image_3} />
                 </Image.PreviewGroup>
               </div>
             </Col>

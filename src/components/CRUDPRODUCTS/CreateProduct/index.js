@@ -11,15 +11,16 @@ function CreateProduct() {
   const history = useHistory();
 
 
-  const onFormSubmit = (formValues) => {
-    dispatch(createNewProduct(formValues));
-    console.log("formValues", formValues);
+  const onFinish = async (values) => {
+    await dispatch(createNewProduct(values));
+    console.log("formValues", values);
     history.push('/products');
   }
 
   return (
     <ProductForm
-      onSubmit={onFormSubmit}
+      onFinish={onFinish}
+      initalValues=""
       topLabel="Add new product to your store" />
   )
 }
