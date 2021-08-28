@@ -1,7 +1,7 @@
 {
   "name": "shoppe",
   "version": "0.1.0",
-  "homepage": "https://nqduan.github.io/shoppe_app",
+  "homepage": "https://nqduan.github.io/shoppe",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.6.3",

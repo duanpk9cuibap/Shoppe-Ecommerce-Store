@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 import 'antd/dist/antd.css';
 import styled from 'styled-components';
 import { addProduct } from '../../redux/Cart/cart.actions';
-import Footer from '../Footer';
 import { Card, Row, Col, Image, Typography, Divider, Button, Checkbox, Carousel } from 'antd';
 import { StarOutlined, StarFilled, EnvironmentOutlined, LockOutlined, MailOutlined, FacebookOutlined, TwitterOutlined, InstagramOutlined } from "@ant-design/icons";
 

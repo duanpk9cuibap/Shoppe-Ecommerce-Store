@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Input, Typography, Button, Divider } from 'antd';
+import { Form, Input, Button, Divider } from 'antd';
 
 import { signUpUserStart } from './../../redux/User/user.actions';
 import './styles.scss';
@@ -24,7 +24,6 @@ const Container = styled.div`
 }
 `;
 
-const { Title } = Typography;
 
 const mapState = ({ user }) => ({
   userErr: user.userErr,
@@ -38,7 +37,7 @@ const Signup = () => {
   const history = useHistory();
 
   const [errors, setErrors] = useState([]);
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
   useEffect(() => {
     if (Array.isArray(userErr) && userErr.length > 0) {

@@ -163,7 +163,7 @@ const ProductForm = (props) => {
             <Form.Item>
               <Button type="text" htmlType="submit" loading={loadingSubmit} onClick={() => setLoadingSubmit(true)}>
                 <WalletOutlined /> Submit</Button>
-              <Button type="primary" style={{ marginLeft: "7px" }} onClick={() => history.push("/products/")}>
+              <Button type="primary" style={{ marginLeft: "7px" }} onClick={() => history.push("/shoppe_app/products/")}>
                 Cancel
               </Button>
             </Form.Item>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { fetchProducts } from '../../../redux/Product/product.actions';
 import Signin from '../../Signin';
+import { deleteProduct } from '../../../redux/Product/product.actions';
 import {
   PageHeader,
   Button,
   Table,
-  Divider,
   Tooltip,
   Popconfirm,
   Image,
@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import _ from 'lodash';
 import styled from "styled-components";
-import { PlusCircleOutlined, EditOutlined, DeleteOutlined, IdcardFilled } from '@ant-design/icons';
+import { PlusCircleOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './styles.scss';
 
@@ -50,9 +50,14 @@ function FetchYourOwnProducts() {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    console.log("products", products);
   }, [])
 
-  console.log(dataSource);
+  const onDeleteProduct = async id => {
+    await dispatch(deleteProduct(id));
+    setDataSource(products?.filter(item => currentUser.id === item.userId))
+  }
+
 
   const columns = [
     {
@@ -102,7 +107,7 @@ function FetchYourOwnProducts() {
           <Tooltip title="Edit this product">
             <Button
               size="small"
-              onClick={() => history.push(`/products/edit/${record.id}`)}
+              onClick={() => history.push(`/shoppe_app/products/edit/${record.id}`)}
             >
               <EditOutlined theme="twoTone" />
             </Button>
@@ -111,7 +116,7 @@ function FetchYourOwnProducts() {
             <Popconfirm
               title="Are you sure delete this product?"
               placement="topRight"
-              onConfirm={() => this.deleteProductType(record.id)}
+              onConfirm={() => onDeleteProduct(record.id)}
               okText="Yes"
               cancelText="No"
             >
@@ -127,51 +132,9 @@ function FetchYourOwnProducts() {
   const tableWidth = _.sum(columns.map((c) => c.width));
 
 
-  /* const renderProducts = () => {
-    return products.map(product => {
-      if (currentUser) {
-        if (currentUser.id === product.userId) {
-          return (
-            <div className="col list-products__card">
-              <div className="card h-100">
-                <img src={product.image} className="card-img-top card__img" alt="..." />
-                <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <Link to={`/products/edit/${product.id}`}><button id="edit">Edit</button></Link>
-                  <Link to={`/products/delete/${product.id}`}><button id="delete">Delete</button></Link>
-                </div>
-              </div>
-            </div>
-          )
-        }
-      }
-    })
-  } */
 
-  /* const renderYourDatas = () => {
-    let count = 0;
-    products.map(product => count = currentUser.id === product.userId ? count += 1 : count)
-    return count > 0 ?
-      ''
-      :
-      (<div className="yourProducts__datas">
-        <h5>You haven't created any products yet!</h5>
-      </div>)
-  } */
 
   return (
-    //<div className="yourProducts">
-    /* <div className="yourProducts__title"><h4>LIST OF YOUR PRODUCTS</h4></div>
-      {renderYourDatas()}
-      <div className="yourProducts__addNew">
-        <Link to='/products/new'>
-          <button>Add your new product</button>
-        </Link>
-      </div> 
-     
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 list-products">
-        {renderProducts()}</div>
-    </div>*/
     <Container>
       {currentUser
         ?
@@ -187,7 +150,7 @@ function FetchYourOwnProducts() {
             }
           />
           <Table
-            //rowKey={"id"}
+            rowKey={"id"}
             dataSource={dataSource}
             columns={columns}
             //loading={loading}
@@ -195,10 +158,8 @@ function FetchYourOwnProducts() {
         </>
         :
         <div className="loadingToSelling">
-
           <br />
           <Signin />
-
         </div>
       }
     </Container>

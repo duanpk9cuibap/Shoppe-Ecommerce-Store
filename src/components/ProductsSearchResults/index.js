@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/Product/product.actions';
-import { useHistory } from 'react-router-dom';
 import ProductCard from '../ProductCard';
 
 import './styles.scss';
@@ -16,7 +15,6 @@ function ProductsSearchResult() {
 
   const { searchTerm, products } = useSelector(mapState);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);

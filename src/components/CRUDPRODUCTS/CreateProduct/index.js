@@ -14,7 +14,7 @@ function CreateProduct() {
   const onFinish = async (values) => {
     await dispatch(createNewProduct(values));
     console.log("formValues", values);
-    history.push('/products');
+    history.push('/shoppe_app/products');
   }
 
   return (

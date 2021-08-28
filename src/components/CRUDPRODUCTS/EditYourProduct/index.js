@@ -1,4 +1,4 @@
-import _ from 'lodash';
+//import _ from 'lodash';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -9,23 +9,23 @@ import ProductForm from '../ProductForm';
 const EditYourProduct = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const params = useParams();
+  const id = useParams().id;
   const mapState = (state) => ({
-    product: state.products[params.id]
+    product: state.products[id]
   })
   const { product } = useSelector(mapState);
 
   useEffect(() => {
     const currentProduct = async () => {
-      await dispatch(fetchProduct(params.id));
+      await dispatch(fetchProduct(id));
     }
     currentProduct();
-  }, [params.id]);
+  }, [id]);
 
 
   const onFinish = async (values) => {
     console.log(values)
-    await dispatch(editProduct(params.id, values));
+    await dispatch(editProduct(id, values));
     history.push('/products');
   }
   return (
