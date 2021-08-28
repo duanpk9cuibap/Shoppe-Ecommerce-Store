@@ -20,18 +20,18 @@ function ProductCard({ product }) {
     e.preventDefault();
     history.push(`products/${product.id}`)
   }
-
+  const { id, image_1, title, price } = product;
   return (
-    <div key={product.id} className="col list-products__card">
+    <div key={id} className="col list-products__card">
       <div onClick={onCardClick} className="card h-100">
-        <img src={product.image} className="card-img-top card__img" alt="..." />
+        <img src={image_1} className="card-img-top card__img" alt="..." />
         <div className="card-body">
-          <h5 id="card__title" className="card-title">{product.title}</h5>
+          <h5 id="card__title" className="card-title">{title}</h5>
         </div>
         <div onClick={e => e.stopPropagation()} className="card-footer">
           <small className="text-muted">
             $
-            <strong>{product.price}</strong>
+            <strong>{price}</strong>
           </small>
           <button className="addToCart" onClick={() => handleAddToCart(product)}>
             Add to basket

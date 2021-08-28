@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-//import { Field, reduxForm } from 'redux-form';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Input, Button, InputNumber, Radio, Typography } from 'antd';
 import { WalletOutlined } from '@ant-design/icons';
@@ -24,9 +23,8 @@ const Container = styled.div`
    border: 1px solid;
    border-color: #a88734 #9c7e31 #846a29;
 }
-.ant-btn-primary{
+.ant-btn-ghost{
   margin-top: 1rem;
-  background-color: #febd69;
   color:black;
   border-radius: 3px;
   border: 1px solid;
@@ -35,11 +33,10 @@ const Container = styled.div`
 .ant-btn-text:hover {
   background: #f3a847;
 }
-.ant-btn-primary:hover {
-  background: #f3a847;
+.ant-btn-ghost:hover {
+  background: #a88734;
 }
 `;
-
 
 const { TextArea } = Input;
 const { Text, Title } = Typography;
@@ -49,18 +46,36 @@ const ProductForm = (props) => {
   const history = useHistory();
   const onFinish = async (values) => {
     console.log('Success:', values);
+    setLoadingSubmit(true);
     await props.onFinish(values);
     setLoadingSubmit(false);
   };
-  console.log("initialvalues", props.initialValues)
+  console.log("initialvalues", props.initialValues);
   const onFinishFailed = (errorInfo) => {
+    setLoadingSubmit(false);
     console.log('Failed:', errorInfo);
   };
+
+  const [form] = Form.useForm();
+  useEffect(() => {
+    if (!!props.initialValues) {
+      form.setFieldsValue({
+        title: props.initialValues?.title || '',
+        image_1: props.initialValues?.image_1 || '',
+        image_2: props.initialValues?.image_2 || '',
+        image_3: props.initialValues?.image_3 || '',
+        category: props.initialValues?.category || '',
+        price: props.initialValues?.price || '',
+        description: props?.initialValues?.description || '',
+      })
+    }
+
+  }, [props.initialValues])
 
   return (
     <Container>
       <div className="productForm">
-        <Link to='/shoppe_app/'>
+        <Link to='/'>
           <img
             className="productForm__logo"
             src={Logo} alt="" />
@@ -69,13 +84,13 @@ const ProductForm = (props) => {
 
           <Form
             layout="vertical"
+            form={form}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
           >
             <Form.Item
               name="title"
               label={<Title level={5}>Title:</Title>}
-              initialValue={props.initialValues?.title}
               rules={[
                 {
                   required: true,
@@ -88,7 +103,6 @@ const ProductForm = (props) => {
             <Form.Item
               name="image_1"
               label={<Title level={5}>Image Link:</Title>}
-              initialValue={props.initialValues?.image_1}
               rules={[
                 {
                   required: true,
@@ -101,7 +115,6 @@ const ProductForm = (props) => {
             <Form.Item
               name="image_2"
               label={<Title level={5}>Extra Image Link <Text disabled>(Optional)</Text></Title>}
-              initialValue={props.initialValues?.image_2}
             >
               <Input />
             </Form.Item>
@@ -115,7 +128,6 @@ const ProductForm = (props) => {
             <Form.Item
               name="category"
               label={<Title level={5}>Choose Category:</Title>}
-              initialValue={props.initialValues?.category}
               rules={[
                 {
                   required: true,
@@ -132,7 +144,6 @@ const ProductForm = (props) => {
             <Form.Item
               name="price"
               label={<Title level={5}>Price:</Title>}
-              initialValue={props.initialValues?.price}
               rules={[
                 {
                   required: true,
@@ -146,24 +157,22 @@ const ProductForm = (props) => {
               />
             </Form.Item>
 
-
             <Form.Item
               name="description"
               label={<Title level={5}>Description:</Title>}
-              initialValue={props?.initialValues?.description}
               rules={[
                 {
                   required: true,
                   message: "Please input description!"
                 },
               ]}>
-              <TextArea rows={5} />
+              <TextArea rows={7} />
             </Form.Item>
 
             <Form.Item>
-              <Button type="text" htmlType="submit" loading={loadingSubmit} onClick={() => setLoadingSubmit(true)}>
+              <Button type="text" htmlType="submit" loading={loadingSubmit}>
                 <WalletOutlined /> Submit</Button>
-              <Button type="primary" style={{ marginLeft: "7px" }} onClick={() => history.push("/shoppe_app/products/")}>
+              <Button type="ghost" style={{ marginLeft: "7px" }} onClick={() => history.push("/products/")}>
                 Cancel
               </Button>
             </Form.Item>

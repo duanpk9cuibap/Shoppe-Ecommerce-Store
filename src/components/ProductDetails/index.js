@@ -52,7 +52,6 @@ const ProductDetails = (props) => {
       return <div>Loading...</div>
     } else {
       const { title, image_1, image_2, image_3, price, description } = product;
-      console.log((Number(price) / 7));
       return (
         <Container>
           <Row>
@@ -82,6 +81,7 @@ const ProductDetails = (props) => {
                     onClick={() => setVisible(true)}
                   />
                 </div>
+
               </Carousel>
 
               <div style={{ display: 'none' }}>

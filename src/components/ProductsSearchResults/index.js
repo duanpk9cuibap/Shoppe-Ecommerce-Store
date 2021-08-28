@@ -40,9 +40,9 @@ function ProductsSearchResult() {
         <div>Please type something to search</div>
       )
     } else if (searchTerm) {
-      return currentProducts.map(product => {
+      return currentProducts.map((product, index) => {
         return (
-          <ProductCard product={product} />
+          <ProductCard product={product} key={index} />
         )
       })
     }

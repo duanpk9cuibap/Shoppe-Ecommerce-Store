@@ -31,7 +31,7 @@ const mapState = ({ user }) => ({
 })
 
 const Signup = () => {
-
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const { userErr, currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -45,24 +45,18 @@ const Signup = () => {
     }
   }, [userErr]);
 
-  useEffect(() => {
-    try {
-
-    }
-    catch {
-
-    }
-  }, [])
 
   useEffect(() => {
     if (currentUser) {
-      history.push('/shoppe_app/');
+      setLoadingSubmit(false);
+      history.push('/');
     }
   }, [currentUser]);
 
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    setLoadingSubmit(true);
     const { displayName, email, password, confirmPassword } = values;
     dispatch(signUpUserStart({ displayName, email, password, confirmPassword }));
   };
@@ -70,7 +64,7 @@ const Signup = () => {
   return (
     <Container>
       <div className="signup">
-        <Link to='/shoppe_app/'>
+        <Link to='/'>
           <img
             className="signup__logo"
             src={Logo} alt="" />
@@ -96,6 +90,7 @@ const Signup = () => {
             <Form.Item
               name="email"
               label="Email:"
+              initialValue="...@gmail.com"
               rules={[
                 {
                   type: 'email',
@@ -148,14 +143,14 @@ const Signup = () => {
               <Input.Password />
             </Form.Item>
             <Form.Item >
-              <Button type="text" htmlType="submit">
+              <Button type="text" htmlType="submit" loading={loadingSubmit}>
                 Create your Shoppe account
               </Button>
             </Form.Item>
           </Form>
           <span>By creating an account, you agree to Shoppe's Conditions of Use and Privacy Notice.</span>
           <Divider dashed />
-          <span>Already have an account?<Link to="/shoppe_app/login"> Sign in</Link></span>
+          <span>Already have an account?<Link to="/login"> Sign in</Link></span>
         </div>
       </div>
     </Container>

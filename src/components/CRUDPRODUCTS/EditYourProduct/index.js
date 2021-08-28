@@ -10,16 +10,15 @@ const EditYourProduct = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const id = useParams().id;
+  console.log(id)
   const mapState = (state) => ({
     product: state.products[id]
   })
   const { product } = useSelector(mapState);
 
   useEffect(() => {
-    const currentProduct = async () => {
-      await dispatch(fetchProduct(id));
-    }
-    currentProduct();
+    console.log("Effrw")
+    dispatch(fetchProduct(id));
   }, [id]);
 
 

@@ -46,53 +46,53 @@ const App = () => {
           <Header />
 
           <Switch>
-            <Route exact path='/shoppe_app'>
+            <Route exact path='/'>
               <Home />
               <Footer />
             </Route>
 
-            <Route exact path='/shoppe_app/login'>
+            <Route exact path='/login'>
               <Signin />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/shoppe_app/registration'>
+            <Route exact path='/registration'>
               <Signup />
               <br />
               <Footer />
             </Route>
 
-            <Route path='/shoppe_app/products/new'
+            <Route path='/products/new'
               render={() => <CreateProduct />} />
 
-            <Route exact path='/shoppe_app/products' render={() => <FetchYourOwnProducts />} />
+            <Route exact path='/products' render={() => <FetchYourOwnProducts />} />
 
-            <Route path='/shoppe_app/products/delete/:id' exact component={DeleteProduct} />
+            <Route path='/products/delete/:id' exact component={DeleteProduct} />
 
-            <Route path="/shoppe_app/products/edit/:id" exact component={EditYourProduct} />
+            <Route path="/products/edit/:id" exact component={EditYourProduct} />
 
-            <Route path="/shoppe_app/products/:id" exact component={ProductDetails} />
+            <Route path="/products/:id" exact component={ProductDetails} />
 
-            <Route exact path="/shoppe_app/search">
+            <Route exact path="/search">
               <Search />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/shoppe_app/recovery'>
+            <Route exact path='/recovery'>
               <ResetPassword />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/shoppe_app/checkout'>
+            <Route exact path='/checkout'>
               <Checkout />
               <br />
               <Footer />
             </Route>
 
-            <Route exact path='/shoppe_app/payment'>
+            <Route exact path='/payment'>
               <Payment />
 
             </Route>

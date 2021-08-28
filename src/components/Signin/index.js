@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input, Button, Divider } from 'antd';
@@ -28,7 +28,7 @@ const mapState = ({ user }) => ({
 })
 
 const Signin = () => {
-
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
   const { currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,7 +37,8 @@ const Signin = () => {
 
   useEffect(() => {
     if (currentUser) {
-      history.push('/shoppe_app/');
+      setLoadingSubmit(false);
+      history.push('/');
     }
   }, [currentUser])
 
@@ -48,6 +49,7 @@ const Signin = () => {
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    setLoadingSubmit(true);
     const { email, password } = values;
     dispatch(emailSignInStart({ email, password }));
 
@@ -56,7 +58,7 @@ const Signin = () => {
   return (
     <Container>
       <div className="signin">
-        <Link to='/shoppe_app/'>
+        <Link to='/'>
           <img
             className="signin__logo"
             src={Logo} alt="" />
@@ -106,7 +108,7 @@ const Signin = () => {
               <Input.Password />
             </Form.Item>
             <Form.Item >
-              <Button type="text" htmlType="submit">
+              <Button type="text" htmlType="submit" loading={loadingSubmit}>
                 Sign in
               </Button>
             </Form.Item>

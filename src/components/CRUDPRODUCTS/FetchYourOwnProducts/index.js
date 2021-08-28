@@ -37,25 +37,19 @@ const mapState = (state) => ({
 })
 
 function FetchYourOwnProducts() {
-  const [dataSource, setDataSource] = useState([]);
   const { products, currentUser } = useSelector(mapState);
   const dispatch = useDispatch();
   const history = useHistory();
-  useEffect(() => {
-    if (currentUser) {
-      setDataSource(products?.filter(item => currentUser.id === item.userId)
-      )
-    }
-  }, [currentUser]);
+
+  const dataSource = products?.filter(item => currentUser?.id === item.userId)
 
   useEffect(() => {
     dispatch(fetchProducts());
     console.log("products", products);
   }, [])
 
-  const onDeleteProduct = async id => {
-    await dispatch(deleteProduct(id));
-    setDataSource(products?.filter(item => currentUser.id === item.userId))
+  const onDeleteProduct = id => {
+    dispatch(deleteProduct(id));
   }
 
 
@@ -65,11 +59,11 @@ function FetchYourOwnProducts() {
       dataIndex: "title",
       width: 150,
       key: "title",
-      render: (id, { title, image }) => (
+      render: (id, { title, image_1 }) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <Image
-            width={250}
-            src={image}
+            width={300}
+            src={image_1}
           >
           </Image>
           <span style={{ marginLeft: "0.5rem" }}>{title}</span>
@@ -107,7 +101,7 @@ function FetchYourOwnProducts() {
           <Tooltip title="Edit this product">
             <Button
               size="small"
-              onClick={() => history.push(`/shoppe_app/products/edit/${record.id}`)}
+              onClick={() => history.push(`/products/edit/${record.id}`)}
             >
               <EditOutlined theme="twoTone" />
             </Button>
@@ -144,7 +138,7 @@ function FetchYourOwnProducts() {
             title="YOUR PRODUCT LIST"
             extra={
               <Button
-                onClick={() => history.push("/shoppe_app/products/new")}>
+                onClick={() => history.push("/products/new")}>
                 <PlusCircleOutlined /> Add your new product
               </Button>
             }

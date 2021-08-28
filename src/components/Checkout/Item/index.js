@@ -5,7 +5,7 @@ import { removeCartItem, addProduct, reduceCartItem } from '../../../redux/Cart/
 
 function Item(product) {
 
-  const { title, image, price, rating, id, quantity } = product;
+  const { title, image, price, quantity } = product;
   const dispatch = useDispatch();
 
 

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { fetchProducts } from '../../redux/Product/product.actions';
 import { Spin } from "antd";
 
@@ -16,7 +15,6 @@ function ShoppeProduct() {
 
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
@@ -37,9 +35,9 @@ function ShoppeProduct() {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const renderHomepageProduct = () => {
-    return currentProducts.map(product => {
+    return currentProducts.map((product, index) => {
       return (
-        <ProductCard product={product} />
+        <ProductCard product={product} key={index} />
       )
     })
   }

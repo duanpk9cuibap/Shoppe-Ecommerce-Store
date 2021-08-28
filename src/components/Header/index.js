@@ -25,19 +25,19 @@ function Header() {
 
   const onSignOut = () => {
     dispatch(signOutUserStart());
-    history.push('/shoppe_app/');
+    history.push('/');
   }
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
     dispatch(searchProduct(searchTerm));
-    history.push('/shoppe_app/search');
+    history.push('/search');
   }
 
   return (
     <div className="header">
       <div className="header__logo">
-        <Link to='/shoppe_app/'>
+        <Link to='/'>
           <img src={Logo} alt="" />
         </Link>
       </div>
@@ -54,7 +54,7 @@ function Header() {
 
       <div className="header__nav">
 
-        {!currentUser ? <Link to='/shoppe_app/login' className="header__option">
+        {!currentUser ? <Link to='/login' className="header__option">
           <span className="header__optionLineOne">
             Hello Guest!
           </span>
@@ -74,7 +74,7 @@ function Header() {
           </div>
         }
 
-        {!currentUser ? <Link className="header__option" to="/shoppe_app/products">
+        {!currentUser ? <Link className="header__option" to="/products">
           <span className="header__optionLineOne">
             Start
           </span>
@@ -83,7 +83,7 @@ function Header() {
           </span>
         </Link>
           :
-          <Link to="/shoppe_app/products" id="yourStore" className="header__option" >
+          <Link to="/products" id="yourStore" className="header__option" >
             <span id="storeIcon" className="header__optionLineOne"> <StoreIcon /></span>
             <span className="header__optionLineTwo">
               Your Store
@@ -100,7 +100,7 @@ function Header() {
           </span>
         </div>
 
-        <Link to='/shoppe_app/checkout' className="header__optionBasket">
+        <Link to='/checkout' className="header__optionBasket">
           <span><ShoppingCartIcon /></span>
           <span className="header__optionLineTwo header__basketCount">
             {totalNumCartItems}

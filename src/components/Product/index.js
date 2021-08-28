@@ -7,11 +7,9 @@ import { useHistory } from 'react-router-dom';
 
 import StarIcon from '@material-ui/icons/Star';
 
-
-
 function Product(product) {
 
-  const { title, image, price, rating } = product;
+  const { title, image, price } = product;
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -34,7 +32,7 @@ function Product(product) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p><StarIcon /></p>
+              <p key={i}><StarIcon /></p>
             ))}
 
 
