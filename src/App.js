@@ -46,7 +46,7 @@ const App = () => {
           <Header />
 
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/shoppe_app'>
               <Home />
               <Footer />
             </Route>
